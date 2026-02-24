@@ -33,7 +33,7 @@ const Dashboard = () => {
 
   useEffect(() => {
       if(isEducator){
-        fetchEnrolledStudents()
+        fetchDashboardData()
       }
     }, [isEducator])
 
