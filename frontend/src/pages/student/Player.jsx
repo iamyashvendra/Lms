@@ -28,7 +28,7 @@ const Player = () => {
 
         course.courseRatings.map((item) => {
           if (item.userId === userData._id) {
-            setInitialRating(item.rating)
+            sertInitialRating(item.rating)
           }
         })
       }
@@ -42,7 +42,8 @@ const Player = () => {
   }
 
   useEffect(() => {
-    if(enrolledCourses.lenth > 0){
+    // FIX 1: 'lenth' typo corrected to 'length'
+    if(enrolledCourses.length > 0){
       getCourseData()
     }
     getCourseData()
@@ -134,7 +135,8 @@ const Player = () => {
                   <ul className='list-disc md:pl-10 pl-4 pr-4 py-2 text-gray-600 border-t border-gray-300'>
                     {chapter.chapterContent.map((lecture, i) => (
                       <li key={i} className='flex items-start gap-2 py-1'>
-                        <img src={progressData && progressData.lectureCompleted.includes(playerData.lectureId) ? assets.blue_tick_icon : assets.play_icon} alt="play icon" className='w-4 h-4 mt-1' />
+                        {/* FIX 2: Changed playerData.lectureId to lecture.lectureId */}
+                        <img src={progressData && progressData.lectureCompleted.includes(lecture.lectureId) ? assets.blue_tick_icon : assets.play_icon} alt="play icon" className='w-4 h-4 mt-1' />
                         <div className='flex items-center justify-between w-full text-gray-800 text-xs md:text-default'>
                           <p>{lecture.lectureTitle}</p>
                           <div className='flex gap-2'>
